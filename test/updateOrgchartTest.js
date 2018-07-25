@@ -5,13 +5,13 @@ import chaiAsPromised from "chai-as-promised";
 import MockAdapter from "axios-mock-adapter";
 import axios from "axios";
 
-import { EMPTY } from "./configs";
+import { TEST_CONFIG } from "./configs";
 import updateOrgchart from "../lib/updateOrgchart";
 
 chai.use(chaiAsPromised);
 chai.should();
 
-const orgchartService = updateOrgchart(EMPTY);
+const orgchartService = updateOrgchart(TEST_CONFIG);
 
 describe("Send user profile update to orgchart", () => {
   let mock;

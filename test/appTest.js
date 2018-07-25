@@ -3,7 +3,7 @@ import chai from "chai";
 import chaiAsPromised from "chai-as-promised";
 import sinon from "sinon";
 
-import { EMPTY } from "./configs";
+import { TEST_CONFIG } from "./configs";
 import App from "../lib/app";
 import * as Http from "http";
 
@@ -26,13 +26,13 @@ describe("App", () => {
 
   it("run", () => {
     close.yields();
-    const app = new App(EMPTY);
+    const app = new App(TEST_CONFIG);
     app.run();
     app.stop();
   });
 
   it("run → fail to close", () => {
-    const app = new App(EMPTY);
+    const app = new App(TEST_CONFIG);
     app.run();
     return app.stop().should.be.rejected;
   });

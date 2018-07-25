@@ -6,7 +6,7 @@ import MockAdapter from "axios-mock-adapter";
 import axios from "axios";
 
 import ExternalUpdate from "../lib/externalUpdate";
-import { EMPTY } from "./configs";
+import { TEST_CONFIG } from "./configs";
 
 chai.use(chaiAsPromised);
 chai.should();
@@ -44,7 +44,7 @@ describe("Handle updates from extenal sources", () => {
     it("successful publish call", () => {
       const userId = "deadbeef";
       const updatedProfile = { userId, something: "something new" };
-      const updater = new ExternalUpdate(EMPTY);
+      const updater = new ExternalUpdate(TEST_CONFIG);
 
       mock.onGet().replyOnce(200, updatedProfile);
       mock.onPost().replyOnce(200, {});

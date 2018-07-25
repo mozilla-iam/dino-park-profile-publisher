@@ -9,7 +9,7 @@ import axios from "axios";
 
 import UserUpdate from "../lib/userUpdate";
 import ExternalUpdate from "../lib/externalUpdate";
-import { EMPTY } from "./configs";
+import { TEST_CONFIG } from "./configs";
 import { createRequest, createResponse } from "node-mocks-http";
 
 chai.use(chaiAsPromised);
@@ -36,7 +36,7 @@ describe("Express handlers", () => {
       const userId = "deadbeef";
       const userUpdate = { updateId };
       const updatedProfile = { updateId, something: "else" };
-      const updater = new UserUpdate(EMPTY);
+      const updater = new UserUpdate(TEST_CONFIG);
 
       mock.onPost().replyOnce(200, { updateId });
       mock.onGet().replyOnce(404);
@@ -73,7 +73,7 @@ describe("Express handlers", () => {
       mock.onGet().replyOnce(404);
       mock.onGet().replyOnce(503);
 
-      const handler = UserUpdate.createHandler(EMPTY);
+      const handler = UserUpdate.createHandler(TEST_CONFIG);
       const req = createRequest({ method: "POST", body: userUpdate });
       const res = createResponse({
         eventEmitter: EventEmitter
@@ -111,7 +111,7 @@ describe("Express handlers", () => {
     it("all working", () => {
       const userId = "deadbeef";
       const updatedProfile = { userId, something: "else" };
-      const updater = new ExternalUpdate(EMPTY);
+      const updater = new ExternalUpdate(TEST_CONFIG);
 
       mock.onGet().replyOnce(200, updatedProfile);
       mock.onPost().replyOnce(200, {});
@@ -138,7 +138,7 @@ describe("Express handlers", () => {
 
     it("fails to get update", () => {
       const userId = "deadbeef";
-      const updater = new ExternalUpdate(EMPTY);
+      const updater = new ExternalUpdate(TEST_CONFIG);
 
       mock.onGet().replyOnce(503);
 
@@ -169,7 +169,7 @@ describe("Express handlers", () => {
       mock.onPost().replyOnce(200, {});
       mock.onPost().replyOnce(503, {});
 
-      const handler = ExternalUpdate.createHandler(EMPTY);
+      const handler = ExternalUpdate.createHandler(TEST_CONFIG);
       const req = createRequest({ method: "POST", body: { userId } });
       const res = createResponse({
         eventEmitter: EventEmitter
@@ -191,7 +191,7 @@ describe("Express handlers", () => {
     it("fails to publish to search service", () => {
       const userId = "deadbeef";
       const updatedProfile = { userId, something: "else" };
-      const updater = new ExternalUpdate(EMPTY);
+      const updater = new ExternalUpdate(TEST_CONFIG);
 
       mock.onGet().replyOnce(200, updatedProfile);
       mock.onPost().replyOnce(503, {});

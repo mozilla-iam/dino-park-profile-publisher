@@ -7,7 +7,7 @@ import axios from "axios";
 
 import UserUpdate from "../lib/userUpdate";
 import CallError from "../lib/error";
-import { EMPTY } from "./configs";
+import { TEST_CONFIG } from "./configs";
 
 chai.use(chaiAsPromised);
 chai.should();
@@ -44,7 +44,7 @@ describe("Handle updates from users", () => {
 
     it("successful publish call", () => {
       const data = { updateId: "abcd1234" };
-      const updater = new UserUpdate(EMPTY);
+      const updater = new UserUpdate(TEST_CONFIG);
 
       mock.onPost().replyOnce(200, data);
 
@@ -52,7 +52,7 @@ describe("Handle updates from users", () => {
     });
 
     it("fail on 404", () => {
-      const updater = new UserUpdate(EMPTY);
+      const updater = new UserUpdate(TEST_CONFIG);
 
       mock.onPost().replyOnce(404, null);
 
@@ -60,7 +60,7 @@ describe("Handle updates from users", () => {
     });
 
     it("fail on empty response", () => {
-      const updater = new UserUpdate(EMPTY);
+      const updater = new UserUpdate(TEST_CONFIG);
 
       mock.onPost().replyOnce(200, null);
 
@@ -68,7 +68,7 @@ describe("Handle updates from users", () => {
     });
 
     it("fail on weird response", () => {
-      const updater = new UserUpdate(EMPTY);
+      const updater = new UserUpdate(TEST_CONFIG);
 
       mock.onPost().replyOnce(200, "weirdo");
 
@@ -94,7 +94,7 @@ describe("Handle updates from users", () => {
     it("successful poll", () => {
       const updateId = "abcd1234";
       const userId = "deadbeef";
-      const updater = new UserUpdate(EMPTY);
+      const updater = new UserUpdate(TEST_CONFIG);
 
       mock.onGet().replyOnce(200, { userId });
 
@@ -104,7 +104,7 @@ describe("Handle updates from users", () => {
     it("successful poll after 3 attempts", () => {
       const updateId = "abcd1234";
       const userId = "deadbeef";
-      const updater = new UserUpdate(EMPTY);
+      const updater = new UserUpdate(TEST_CONFIG);
 
       mock
         .onGet()
@@ -120,7 +120,7 @@ describe("Handle updates from users", () => {
     it("fail on empty response", () => {
       const updateId = "abcd1234";
       const userId = "deadbeef";
-      const updater = new UserUpdate(EMPTY);
+      const updater = new UserUpdate(TEST_CONFIG);
 
       mock.onGet().reply(200, null);
 
@@ -132,7 +132,7 @@ describe("Handle updates from users", () => {
     it("fail on error response", () => {
       const updateId = "abcd1234";
       const userId = "deadbeef";
-      const updater = new UserUpdate(EMPTY);
+      const updater = new UserUpdate(TEST_CONFIG);
 
       mock.onGet().reply(200, { error: "Anything" });
 
@@ -144,7 +144,7 @@ describe("Handle updates from users", () => {
     it("fail poll after 3 attempts", () => {
       const updateId = "abcd1234";
       const userId = "deadbeef";
-      const updater = new UserUpdate(EMPTY);
+      const updater = new UserUpdate(TEST_CONFIG);
 
       mock.onGet().reply(404);
 
@@ -156,7 +156,7 @@ describe("Handle updates from users", () => {
     it("timeout poll", () => {
       const updateId = "abcd1234";
       const userId = "deadbeef";
-      const updater = new UserUpdate(EMPTY);
+      const updater = new UserUpdate(TEST_CONFIG);
 
       mock.onGet().timeout();
 
@@ -168,7 +168,7 @@ describe("Handle updates from users", () => {
     it("network error on poll", () => {
       const updateId = "abcd1234";
       const userId = "deadbeef";
-      const updater = new UserUpdate(EMPTY);
+      const updater = new UserUpdate(TEST_CONFIG);
 
       mock.onGet().networkError();
 
@@ -179,7 +179,7 @@ describe("Handle updates from users", () => {
 
     it("empty response on poll", () => {
       const updateId = "abcd1234";
-      const updater = new UserUpdate(EMPTY);
+      const updater = new UserUpdate(TEST_CONFIG);
 
       mock.onGet().reply(200);
 

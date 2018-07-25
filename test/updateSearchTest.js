@@ -5,13 +5,13 @@ import chaiAsPromised from "chai-as-promised";
 import MockAdapter from "axios-mock-adapter";
 import axios from "axios";
 
-import { EMPTY } from "./configs";
+import { TEST_CONFIG } from "./configs";
 import updateSearch from "../lib/updateSearch";
 
 chai.use(chaiAsPromised);
 chai.should();
 
-const searchService = updateSearch(EMPTY);
+const searchService = updateSearch(TEST_CONFIG);
 
 describe("Send user profile update to search", () => {
   let mock;

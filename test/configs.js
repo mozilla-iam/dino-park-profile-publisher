@@ -1,4 +1,4 @@
-const EMPTY = {
+const TEST_CONFIG = {
   port: 8080,
   shutdownTimeout: 10,
   cisUpdateUrl: "http://localhost/",
@@ -8,6 +8,6 @@ const EMPTY = {
   personApiUrl: "http://localhost/"
 };
 
-Object.freeze(EMPTY);
+Object.freeze(TEST_CONFIG);
 
-export { EMPTY };
+export { TEST_CONFIG };
