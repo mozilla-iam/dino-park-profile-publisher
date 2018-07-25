@@ -5,7 +5,7 @@ let app;
 
 async function main() {
   try {
-    const cfg = await load("config.json");
+    const cfg = load(process.env["CONFIG_FILE"]);
 
     app = new App(cfg);
 

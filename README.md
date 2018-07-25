@@ -36,11 +36,15 @@ Setting can be changed via `config.js`:
 ```json
 {
   "port": 8080,
+  "shutdownTimeout": 5000,
   "cisUpdateUrl": "http://localhost:8888/cisUpdate",
   "cisStatusUrl": "http://localhost:8888/cisStatus/",
-  "cisStatusTimeout": 10,
-  "cisStatusRetryCount": 3,
-  "personApiUrl": "http://localhost:8888/personApi/"
+  "cisStatusTimeout": 1000,
+  "cisStatusRetryDelay": 100,
+  "cisStatusRetryCount": 10,
+  "personApiUrl": "http://localhost:8888/personApi/",
+  "orgchartApiUrl": "http://localhost:8888/orgchartApi",
+  "searchApiUrl": "http://localhost:8888/searchApi"
 }
 ```
 
@@ -61,5 +65,5 @@ npm run-script coverage
 
 ```
 npm install
-npm run dev
+CONFIG_FILE="config.json" npm run dev
 ```
