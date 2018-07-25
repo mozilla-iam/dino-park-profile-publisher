@@ -29,9 +29,13 @@ describe("Everything configy", () => {
     it("error on empty config", done => {
       tmp.file((_, path, fd) =>
         promisify(fs.write)(fd, JSON.stringify({}))
-          .then(() => (() => load(path)).should.throw && done())
+          .then(() => (() => load(path)).should.throw() && done())
           .catch(e => done(e))
       );
+    });
+
+    it("error on no config", () => {
+      (() => load()).should.throw();
     });
   });
 });
