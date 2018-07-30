@@ -24,7 +24,7 @@ async function shutdown() {
     logger.info("shut down gracefully :)");
     process.exit(0);
   } catch (e) {
-    logger.error(`faild to stop: ${e}`);
+    logger.error(`failed to stop: ${e}`);
     logger.error("exiting with exit code 1 :/");
     process.exit(1);
   }

@@ -40,6 +40,13 @@ describe("Get user profile from person api", () => {
     const userId = "deadbeef";
     mock.onGet().replyOnce(200, null);
 
+    return getProfileByUserId(userId).should.be.rejectedWith(/empty response/);
+  });
+
+  it("server error", () => {
+    const userId = "deadbeef";
+    mock.onGet().replyOnce(503, null);
+
     return getProfileByUserId(userId).should.be.rejected;
   });
 });

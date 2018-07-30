@@ -8,11 +8,11 @@ and the CIS stack.
 
 ### User Updates
 
-`/userupdate` is an endoint used by mozillinas to publish profil updates to CIS.
+`/userupdate` is an endpoint used by mozillians to publish profile updates to CIS.
 
 Posting a profile update to this endpoint will trigger the following flow:
 
-1. Profile gets posited to the CIS endpoint, which will return an `updateId`
+1. Profile gets posted to the CIS endpoint, which will return an `updateId`
    (this will most likely be a Kinesis stream number).
 2. Poll the CIS status endpoint until the update was processed. This will 
    return the `user_id` of the published profile.
@@ -23,13 +23,13 @@ Posting a profile update to this endpoint will trigger the following flow:
 `/externalupdate` is an endpoint used by CIS to trigger profile updates for the
 DinoPark services.
 
-Posting a an update event to this endpoint will trigger the following flow:
+Posting an update event to this endpoint will trigger the following flow:
 
 1. Get the updated profile from the person API.
 2. Publish the updated profile to the search service.
 3. Publish the updated profile to the orgchart service.
 
-## Configuraion
+## Configuration
 
 Setting can be changed via `config.js`:
 
@@ -61,7 +61,7 @@ npm test
 npm run-script coverage
 ```
 
-### Run as a Dev Server
+### Run as a Development Server
 
 ```
 npm install

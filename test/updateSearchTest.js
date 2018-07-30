@@ -41,7 +41,7 @@ describe("Send user profile update to search", () => {
     const profile = { userId, something: "something new" };
     mock.onPost().replyOnce(200, null);
 
-    return searchService(profile).should.be.rejected;
+    return searchService(profile).should.be.rejectedWith(/empty response/);
   });
 
   it("server error", () => {

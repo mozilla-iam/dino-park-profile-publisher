@@ -41,7 +41,7 @@ describe("Send user profile update to orgchart", () => {
     const profile = { userId, something: "something new" };
     mock.onPost().replyOnce(200, null);
 
-    return orgchartService(profile).should.be.rejected;
+    return orgchartService(profile).should.be.rejectedWith(/empty response/);
   });
 
   it("server error", () => {
