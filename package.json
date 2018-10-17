@@ -3,8 +3,6 @@
   "version": "0.0.1",
   "description": "Profile Publisher Service for the new Mozillians aka Dino Park",
   "main": "index.js",
-  "browser": "main.js",
-  "module": "main.js",
   "scripts": {
     "dev": "node -r esm index.js",
     "pretest": "eslint --ignore-path .gitignore .",
