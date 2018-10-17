@@ -1,0 +1,13 @@
+name: dino-park-profile-publisher
+namespace: dino-park
+rev: latest
+
+env_SHUTDOWN_TIMEOUT: 1000
+env_CIS_STATUS_TIMEOUT: 1000
+env_CIS_STATUS_RETRY_DELAY: 100
+env_CIS_STATUS_RETRY_COUNT: 10
+env_PERSON_API_URL: "http://dino-cave-service/personApi/"
+env_ORGCHART_API_URL: "http://dino-tree-service/orgchart/update"
+env_SEARCH_API_URL: "http://dino-park-search/search/update"
+env_CIS_UPDATE_URL: "http://dino-cave-service/cisUpdate"
+env_CIS_STATUS_URL: "http://dino-cave-service/cisStatus/"
